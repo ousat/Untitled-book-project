@@ -21,7 +21,18 @@ function create_user (params) {
 
 
 function login (params) {
-
+    user.find({
+        where: {
+            email: params['email']
+        }
+    }).then(function(row){
+        if(!row){
+            return {'message': 'user not found', 'status': -1}
+        }else{
+            password =  params['password']
+            user_data = row.dataValue
+        }
+    })
 }
 
 
