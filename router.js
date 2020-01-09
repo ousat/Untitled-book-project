@@ -3,6 +3,8 @@ var router = express.Router()
 
 var user_controller = require('./controllers/user')
 
+var books_controller = require('/controllers/books')
+
 // Authentication requests
 
 // authenticate and return response with jwt token
@@ -22,7 +24,9 @@ router.post('/register', async function (req, res) {
 
 
 router.post('/books/publish', function(req, res) {
-  
+  response_date =  books_controller.publish(req.body)
+
+  res.send(JSON.stringify(response_data))
 })
 
 router.get('/books', function(req, res) {
